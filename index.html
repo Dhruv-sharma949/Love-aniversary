@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our 3 Years of Love ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+body{
+  background:linear-gradient(120deg,#ff9a9e,#fad0c4);
+  color:#333;
+  text-align:center;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(255,255,255,0.9);
+  padding:10px;
+  z-index:1000;
+}
+nav button{
+  margin:5px;
+  padding:8px 15px;
+  border:none;
+  border-radius:20px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+}
+
+/* SECTIONS */
+section{
+  min-height:100vh;
+  padding:90px 20px;
+  display:none;
+}
+section.active{
+  display:block;
+}
+
+/* HERO */
+.hero{
+  color:white;
+}
+.hero h1{
+  font-size:2.6rem;
+}
+.hero p{
+  margin-top:10px;
+  font-size:1.1rem;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:25px;
+  margin:25px auto;
+  border-radius:20px;
+  max-width:850px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* GALLERY */
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+}
+.gallery img{
+  width:250px;
+  height:300px;
+  object-fit:cover;
+  border-radius:15px;
+  box-shadow:0 8px 15px rgba(0,0,0,0.3);
+}
+
+/* LETTER */
+input{
+  padding:10px;
+  width:70%;
+  margin-top:10px;
+}
+.action{
+  margin-top:15px;
+  padding:10px 20px;
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  border-radius:15px;
+  cursor:pointer;
+}
+#letterContent,#surpriseMsg{
+  display:none;
+  margin-top:15px;
+  font-size:1.2rem;
+  color:#ff3366;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:2rem;}
+  .gallery img{width:90%;height:auto;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <button onclick="showSection('home')">Home</button>
+  <button onclick="showSection('memories')">Memories</button>
+  <button onclick="showSection('moments')">Moments</button>
+  <button onclick="showSection('letter')">Love Letter</button>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active hero">
+  <h1>Happy 3rd Anniversary ❤️</h1>
+  <p>3 Years • One Heart • Forever Together</p>
+
+  <div class="card">
+    <p>
+      These three years with you are my biggest blessing.
+      Every smile, every fight, every hug made us stronger.
+      I thank God every day for you.
+    </p>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories">
+  <h2>Our Memories 📸</h2>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<!-- MOMENTS -->
+<section id="moments">
+  <h2>Special Moments ✨</h2>
+
+  <div class="card">
+    <h3>💌 The Beginning</h3>
+    <p>The day my heart chose you forever.</p>
+  </div>
+
+  <div class="card">
+    <h3>🌧 Tough Days</h3>
+    <p>With you beside me, nothing feels impossible.</p>
+  </div>
+
+  <div class="card">
+    <h3>😂 Endless Laughs</h3>
+    <p>Your smile is my favorite place.</p>
+  </div>
+</section>
+
+<!-- LOVE LETTER -->
+<section id="letter">
+  <h2>Private Love Letter 🔐</h2>
+
+  <div class="card">
+    <p>Enter our secret password 💖</p>
+    <input type="password" id="pass">
+    <br>
+    <button class="action" onclick="unlock()">Unlock</button>
+  </div>
+
+  <div class="card" id="letterContent">
+    <p>
+      My love,<br><br>
+These three years with you are the most beautiful part of my life. Every smile of yours makes my world brighter, and every moment with you feels like home. Loving you is the easiest and best thing I have ever done.
+
+I know there were moments when I didn’t understand you properly, and for that I am truly sorry. Sometimes my words were not right, sometimes my silence was wrong—but my love for you was never missing, not even for a second.
+
+You are my safe place, my happiness, my favorite thought. With you, even ordinary days feel special. I don’t just love you for who you are, but for how you make me feel—calm, complete, and truly loved.
+
+I promise to choose you every day, to care for you more, to understand you better, and to stand by you in every situation. My heart is yours today, tomorrow, and forever.
+
+I loved you yesterday.
+I love you today.
+And I will love you forever. ♾️❤️
+
+Always yours,
+Dhruv 💞
+    </p>
+
+    <button class="action" onclick="surprise()">🎁 Surprise</button>
+    <p id="surpriseMsg">No matter what happens, my heart will always choose you ♾️❤️</p>
+  </div>
+</section>
+
+<script>
+/* NAVIGATION */
+function showSection(id){
+  document.querySelectorAll("section").forEach(sec=>{
+    sec.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+
+/* PASSWORD */
+function unlock(){
+  if(document.getElementById("pass").value === "love123"){
+    document.getElementById("letterContent").style.display="block";
+  }else{
+    alert("Wrong password 😅");
+  }
+}
+
+/* SURPRISE */
+function surprise(){
+  document.getElementById("surpriseMsg").style.display="block";
+}
+
+/* AUTO LOAD 20 PHOTOS */
+const gallery = document.getElementById("gallery");
+for(let i=1;i<=20;i++){
+  const img=document.createElement("img");
+  img.src=`images/pic${i}.jpg`;
+  gallery.appendChild(img);
+}
+</script>
+
+</body>
+</html>
